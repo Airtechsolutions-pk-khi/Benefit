@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Payment Response";
+}
+<h2>Payment Response</h2>
+@if (Model != null)
+{
+    <p>Status: @Model.Status</p>
+    <p>Result: @Model.Result</p>
+    <p>Transaction ID: @Model.TransactionID</p>
+    <p>Reference ID: @Model.ReferenceID</p>
+    <p>Auth Code: @Model.AuthCode</p>
+}
+else
+{
+    <p>No response data available.</p>
+}
+
