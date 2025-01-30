@@ -52,18 +52,18 @@ namespace MerchantApp.Controllers
             pipe.setPassword("02589752");
             pipe.setTranportalID("02589752");
             pipe.setTrackId(OrderIDbp.ToString());
-            //pipe.setResponseURL(successURL);
-            //pipe.setErrorURL(errorURL);
+        //pipe.setResponseURL(successURL);
+        //pipe.setErrorURL(errorURL);
 
-           
+        
             // Optionally set UDF fields or other parameters
             pipe.setUdf1("1");
             pipe.setUdf2("2");
             pipe.setUdf2("3");
             pipe.setUdf2("4");
             pipe.setUdf2("5");
-            pipe.setResponseURL("https://www.bakingbar.pk/Home/ParseResponse");
-            pipe.setErrorURL("https://www.bakingbar.pk/Home/ParseResponseError");
+            pipe.setResponseURL("https://www.paymentgateway.premium-pos.com/Home/ParseResponse");
+            pipe.setErrorURL("https://www.paymentgateway.premium-pos.com/Home/ParseResponseError");
             try
             {
                 // Perform the transaction
@@ -99,7 +99,7 @@ namespace MerchantApp.Controllers
       
         public ActionResult ParseResponse()
         {
-            return Content("REDIRECT=https://www.bakingbar.pk/Home/Result");
+            return Content("REDIRECT=https://www.paymentgateway.premium-pos.com/Home/Result");
         }
         public ActionResult Success()
         {
@@ -182,11 +182,11 @@ namespace MerchantApp.Controllers
                 responseModel.result = "Success";
 
                 //string jsonResponse = JsonConvert.SerializeObject(responseModel);
-                //return Content("REDIRECT=https://www.bakingbar.pk/Home/Success");
+                //return Content("REDIRECT=https://www.paymentgateway.premium-pos.com/Home/Success");
                 //return Content(jsonResponse);
 
 
-                string redirectUrl = $"https://www.bakingbar.pk/Home/Success?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
+                string redirectUrl = $"https://www.paymentgateway.premium-pos.com/Home/Success?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
 
                 // Redirect the user to the URL with query parameters
                 return Redirect(redirectUrl);
@@ -267,13 +267,13 @@ namespace MerchantApp.Controllers
                     responseModel.result = "Unable to process transaction temporarily. Try again later.";
                 }
 
-                string redirectUrl = $"https://www.bakingbar.pk/Home/declined?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
+                string redirectUrl = $"https://www.paymentgateway.premium-pos.com/Home/declined?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
 
                 // Redirect the user to the URL with query parameters
                 return Redirect(redirectUrl);
 
                 //string jsonResponse = JsonConvert.SerializeObject(responseModel);
-                ////return Content("REDIRECT=https://www.bakingbar.pk/Home/declined");
+                ////return Content("REDIRECT=https://www.paymentgateway.premium-pos.com/Home/declined");
                 //return Content(jsonResponse);
             }
             else
@@ -294,13 +294,13 @@ namespace MerchantApp.Controllers
                     responseModel.result = "Unable to process transaction temporarily. Try again later.";
                 }
 
-                string redirectUrl = $"https://www.bakingbar.pk/Home/declined?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
+                string redirectUrl = $"https://www.paymentgateway.premium-pos.com/Home/declined?status={responseModel.status}&result={Uri.EscapeDataString(responseModel.result)}";
 
                 // Redirect the user to the URL with query parameters
                 return Redirect(redirectUrl);
 
                 //string jsonResponse = JsonConvert.SerializeObject(responseModel);
-                ////return Content("REDIRECT=https://www.bakingbar.pk/Home/ResultFailed");
+                ////return Content("REDIRECT=https://www.paymentgateway.premium-pos.com/Home/ResultFailed");
                 //return Content(jsonResponse);
             }
             //return Content(response);
@@ -334,7 +334,7 @@ namespace MerchantApp.Controllers
                 }
 
                 // Decrypt `trandata` using the resource key
-                string resourceKey = "43507724619143507724619143507724"; // Replace with secure configuration
+                string resourceKey = "50298093185450298093185450298093"; // Replace with secure configuration
                 resources res = new resources();
                 trandata = decrypt(StringToByteArray(trandata), resourceKey, res.IV);
 
@@ -350,7 +350,7 @@ namespace MerchantApp.Controllers
                         return Content("Error: Payment not successful.");
                     }
 
-                    return Content("REDIRECT=https://bakingbar.pk/Home/ParseResponse");
+                    return Content("REDIRECT=https://paymentgateway.premium-pos.com/Home/ParseResponse");
                 }
                 else
                 {
@@ -375,7 +375,7 @@ namespace MerchantApp.Controllers
         //    string errorText = "";
         //    try
         //    {                
-        //        string resourceKey = "43507724619143507724619143507724";
+        //        string resourceKey = "50298093185450298093185450298093";
         //        resources res = new resources();
         //        trandata = decrypt(StringToByteArray(trandata), resourceKey, res.IV);
 
@@ -413,7 +413,7 @@ namespace MerchantApp.Controllers
         //    string errorText = "";
         //    try
         //    {
-        //        string resourceKey = "43507724619143507724619143507724";
+        //        string resourceKey = "50298093185450298093185450298093";
         //        resources res = new resources();
         //        trandata = decrypt(StringToByteArray(trandata), resourceKey, res.IV);
 
@@ -539,7 +539,7 @@ namespace MerchantApp.Controllers
         //            if (Request.Form["trandata"] !=null)
         //            {
         //                var pipe = new FSS.Pipe.iPayBenefitPipe();
-        //            pipe.setResourceKey("43507724619143507724619143507724"); // Set your resource key
+        //            pipe.setResourceKey("50298093185450298093185450298093"); // Set your resource key
         //            trandata = Request.Form["trandata"].ToString();                  
         //            int parse = pipe.ParseResponse(trandata);
         //            if (parse == 0)
@@ -586,7 +586,7 @@ namespace MerchantApp.Controllers
 
         //        if (result == "CAPTURED")
         //        {
-        //            var url = "https://bakingbar.pk/Home/Response?OrderID=" + OrderID;
+        //            var url = "https://paymentgateway.premium-pos.com/Home/Response?OrderID=" + OrderID;
         //            return Content("REDIRECT=" + url);
         //        }
         //        else if (result == "NOT CAPTURED" || result == "CANCELED" || result == "DENIED BY RISK" || result == "HOST TIMEOUT")
@@ -650,12 +650,12 @@ namespace MerchantApp.Controllers
         //            {
         //                response = "Unable to process transaction temporarily. Try again later.";
         //            }
-        //            return Content("REDIRECT=https://bakingbar.pk/Home/Response?OrderID=0");
+        //            return Content("REDIRECT=https://paymentgateway.premium-pos.com/Home/Response?OrderID=0");
         //        }
         //        else
         //        {
 
-        //            return Content("REDIRECT=https://bakingbar.pk/Home/Response?OrderID=0");
+        //            return Content("REDIRECT=https://paymentgateway.premium-pos.com/Home/Response?OrderID=0");
         //        }
 
         //        //    if (result == 1)
@@ -680,7 +680,7 @@ namespace MerchantApp.Controllers
             ViewBag.Message = "An unknown error occurred.";
             return View();
         }
-        //private const string ResourceKey = "43507724619143507724619143507724";
+        //private const string ResourceKey = "50298093185450298093185450298093";
         //private const string InitializationVector = "PGKEYENCDECIVSPC";
         //private const string PaymentEndpoint = "https://test.benefit-gateway.bh/payment/API/hosted.htm";
 

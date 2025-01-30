@@ -23,7 +23,7 @@ namespace FSS.Pipe
         [JsonProperty]
         protected string id = "";
         [JsonProperty]
-        protected string resourceKey = "43507724619143507724619143507724";
+        protected string resourceKey = "50298093185450298093185450298093";
         [JsonProperty]
         protected string currencycode = "";
         [JsonProperty]
@@ -559,7 +559,7 @@ namespace FSS.Pipe
 
     public class resources
     {
-        public string EndPoint = "https://test.benefit-gateway.bh/payment/API/hosted.htm";
+        public string EndPoint = "https://www.benefit-gateway.bh/payment/API/hosted.htm";
         public string IV = "PGKEYENCDECIVSPC";
     }
 
